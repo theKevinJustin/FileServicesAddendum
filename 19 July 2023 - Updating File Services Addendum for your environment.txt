@@ -1,0 +1,17 @@
+#=============================================================
+# File Services Addendum updates
+#=============================================================
+
+
+
+#=============================================================
+# Need to update for the DS and WA report tasks
+#=============================================================
+
+# If DFS is configured in environment...
+#
+# Substitute - find/replace these variables for your environment
+
+##DFSGROUPNAME##
+##DFSPRIMARYSERVER##
+##DFSSECONDARYSERVER##
