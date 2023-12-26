@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>Microsoft.Windows.Server.FileServices.2016.Addendum</ID>
-      <Version>1.0.3.0</Version>
+      <Version>1.0.3.3</Version>
     </Identity>
     <Name>Microsoft Windows Server FileServices 2016 Addendum</Name>
     <References>
@@ -98,7 +98,7 @@
               <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
                 <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
                 <SyncTime>$Config/SyncTime$</SyncTime>
-                <ScriptName>Proactive.DFS.Watcher.Monitoring.Class.Discovery.DS.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DFS.Watcher.Monitoring.Class.Discovery.DS.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to discover a SCOM class when a File Exists
@@ -124,7 +124,7 @@ param($SourceId,$ManagedEntityId,$ComputerName,$MGName,$DebugLogging,$FilePath)
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "DFS.Watcher.Monitoring.Class.Discovery.DS.v10029.ps1"
+$ScriptName = "DFS.Watcher.Monitoring.Class.Discovery.DS.v10033.ps1"
 $EventID = "662"
 #=================================================================================
 
@@ -255,7 +255,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript Completed. `nScript Runt
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  DFSR replication backlog monitor
@@ -268,7 +268,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`nScript Completed. `nScript Runt
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging.  
-$ScriptName = "Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10029.ps1"
+$ScriptName = "Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10033.ps1"
 $EventID = "542"
 #=================================================================================
 
@@ -424,7 +424,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10029.ps1</ScriptName>
+                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather DFSR backlog and check Engineering script
@@ -438,7 +438,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10029.ps1"
+$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10033.ps1"
 $EventID = "546"
 #=================================================================================
  
@@ -676,8 +676,8 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                   <WeeklySchedule>
                     <Windows>
                       <Daily>
-                        <Start>09:39</Start>
-                        <End>09:59</End>
+                        <Start>05:39</Start>
+                        <End>05:59</End>
                         <DaysOfWeekMask>62</DaysOfWeekMask>
                       </Daily>
                     </Windows>
@@ -686,10 +686,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to gather DFS alerts and close via on demand task
+#  Script to gather Windows DFS File Services alerts and close via on demand task
 #
 #  Author: Kevin Justin
 #  v1.0
@@ -700,7 +700,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10029.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10033.ps1"
 $EventID = "544"
 #=================================================================================
 
@@ -731,7 +731,7 @@ $bag = $momapi.CreatePropertyBag()
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
 
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather DFS Alerts for date ($date).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather Windows DFS File Services alerts for date ($date).")
 
 $AllDFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
 	-AND ( $_.ResolutionState -ne "255" ) `
@@ -787,11 +787,11 @@ if ($DFSAlerts.count -gt 0 )
 	$DFSAMessage += "# DFS Alert report"
 	$DFSAMessage += "#"
 	$DFSAMessage += "#============================================================"
-	$DFSAMessage += "# Number of open DFS alerts"
+	$DFSAMessage += "# Number of open Windows DFS File Services alerts"
 	$DFSAMessage += "#=========================="
 	$DFSAMessage += $DFSAlerts.Count
 	$DFSAMessage += ""
-	$DFSAMessage += "# DFS alerts that were auto closed"
+	$DFSAMessage += "# Windows DFS File Services alerts that were auto closed"
 	$DFSAMessage += "#==============================="
 	$DFSAMessage += $DFSAlerts | ft TimeRaised,MonitoringObjectDisplayName,Description -auto -wrap
 	$DFSAMessage += "#============================================================"
@@ -853,8 +853,8 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                   <WeeklySchedule>
                     <Windows>
                       <Daily>
-                        <Start>09:50</Start>
-                        <End>10:20</End>
+                        <Start>05:50</Start>
+                        <End>06:20</End>
                         <DaysOfWeekMask>62</DaysOfWeekMask>
                       </Daily>
                     </Windows>
@@ -863,10 +863,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to gather DFS alerts and close via on demand task
+#  Script to gather Windows DFS File Services alerts and close via on demand task
 #
 #  Author: Kevin Justin
 #  v1.0
@@ -877,7 +877,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10029.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10033.ps1"
 $EventID = "544"
 #=================================================================================
 
@@ -907,14 +907,22 @@ $bag = $momapi.CreatePropertyBag()
 
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
+$Age = [DateTime](Get-Date).AddDays(-7)
 
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather DFS Alerts for date ($date).")
- 
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather Windows DFS File Services alerts for date ($date).")
 
-# Gather DFS alerts
+# Gather Windows DFS File Services alerts
 $DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
 	-AND ( $_.ResolutionState -ne "255" ) `
-	}  | ft MonitoringObjectDisplayName,Description -auto -wrap
+	}  
+	# | ft MonitoringObjectDisplayName,Description -auto -wrap
+
+$DFSAlertsToClose = $DFSAlerts | ? { ( $_.Name -like "*Corruptions*" ) `
+    -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
+	} | ? { $_.ResolutionState -ne "255" }
+
+$Test = $DFSAlerts | where { $_.Name -notlike "*rule*" }
+$Test.count
 
 
 # Gather DFS management packs and put into array
@@ -944,89 +952,10 @@ foreach ( $DFSpack in $DFSMgmtPackArray )
 
 	$SCOMCoreRules += $SCOMCoreMP.GetRules()
 	$SCOMCoreMonitors += $SCOMCoreMP.GetMonitors()
-	#$SCOMCoreMonitors.Count
 	}
 
-	$SCOMCoreMonitors.Count
+$SCOMCoreMonitors.Count
 
-
-# Reset Monitors Script
-# Put ps1 in mgmtpacks folder
-# https://sc.scomurr.com/scom-2012-monitor-reset-cleaning-up-the-environment/
-#	Download
-# https://gallery.technet.microsoft.com/SCOM-2012-Batch-reset-63a17534
-	
-#Alternate
-#https://gallery.technet.microsoft.com/scriptcenter/Auto-reset-script-for-d8b775ca
-
-
-# Old method
-#=================================================================================
-#$DFSAlerts = get-scomalert | ? { ( $_.Name -eq "DFS-R: A Replicated Folder is Missing an Outbound Connection" ) `
-#    -OR ( $_.Name -eq "DFS-R: Communication Error During Replication" ) `
-#    -OR ( $_.Name -eq "DFS-R: Conflicting Configuration Objects in AD DS" ) `
-#    -OR ( $_.Name -eq "DFS-R: Connection or Replication Group Configuration Doesn't Match with AD DS" ) `
-#    -OR ( $_.Name -eq "DFS-R: DFS Replication Service Is Stopped" ) `
-#    -OR ( $_.Name -eq "DFS-R: Failed to Reach a Replication Group Member" ) `
-#    -OR ( $_.Name -eq "DFS-R: Out of Disk Space" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replicate Folder Was Offline for Too Many Days" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replication Database Internal Error" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replication Stopped Due to an Error on a Volume" ) `
-#    -OR ( $_.Name -eq "DFS-R: Unexpected Service Shutdown" ) `
-#    -OR ( $_.Name -eq "DFS Replication 2104 Event ID with Message contains 'Internal database error' Alert Monitor" ) `	
-#    -OR ( $_.Name -eq "Proactive DFSR Replication And Backlog Monitor" ) `
-#    -OR ( $_.Name -like "DFS Monitors auto-closed for*" ) `
-#    }   | ? { $_.ResolutionState -ne "255"}  | ft MonitoringObjectDisplayName,Description -auto -wrap
-
-#
-# Alert Name = DFS-R: Replication Stopped Due to an Error on a Volume
-# Alert Name = DFS-R: Replication Database Internal Error
-# Alert Name = DFS-R: Unexpected Service Shutdown
-# Alert Name = DFS-R: Out of Disk Space
-# Alert Name = DFS-R: A Replicated Folder is Missing an Outbound Connection
-# Alert Name = DFS-R: DFS Replication Service Is Stopped
-
-$Test = $DFSAlerts.count
-
-if ( $Test -gt 0 )
-{
-foreach ($MonitorDisplayName in $SCOMCoreMonitors.DisplayName)
-	{
-	$Monitors = @(Get-SCOMMonitor -displayname $MonitorDisplayName )
-
-	# Set up monitor objects to reset
-	foreach ($Monitor in $Monitors)
-		{
-		$MonitorClass = Get-SCOMClass -Id $Monitor.Target.Id
-		$ActiveMonitors = Get-SCOMClassInstance -Class $MonitorClass | ? { ($_.healthstate -ne 'Success') -AND ( $_.healthstate -ne 'Uninitialized') -AND ($_.IsAvailable -eq $true) }
-		write-host "Found" + $ActiveMonitors.Count + "active monitors."
-		if ( $ActiveMonitors -ne $null)
-			{
-			foreach ($ActiveMonitor in $ActiveMonitors)
-				{
-				write-host " Resetting Health State on '" +$ActiveMonitor.FullName + "'" 
-				$ActiveMonitor.ResetMonitoringState($Monitor.ID)
-				}
-			}
-		}
-	}
-}
-
-#
-# Alerts to auto close after reset monitor
-#
-
-# Gather DFS alerts
-$DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-	-AND ( $_.ResolutionState -ne "255" ) `
-	}  # | ft MonitoringObjectDisplayName,Description -auto -wrap
-
-$DFSAlertsToClose = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-    -OR ( $_.Name -like "*Corruptions*" ) `
-    -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
-	} | ? { $_.ResolutionState -ne "255" } | Resolve-SCOMAlert -Comment "Closing daily alert flood after report alert generated - DFS Addendum automation DS"
-
-$DFSAlerts | Resolve-SCOMAlert -Comment "Closing daily alert flood after report alert generated - DFS Addendum automation DS"
 
 #
 # Build report
@@ -1038,12 +967,12 @@ $DFSAMessage += ""
 $DFSAMessage += "# DFS Alert report"
 $DFSAMessage += "#"
 $DFSAMessage += "#============================================================"
-$DFSAMessage += "# Number of open DFS alerts"
+$DFSAMessage += "# Number of open Windows DFS File Services alerts"
 $DFSAMessage += "#=========================="
 $DFSAMessage += $DFSAlerts | out-string
 $DFSAMessage += ""	
 $DFSAMessage += ""
-$DFSAMessage += "# DFS alerts that were auto closed"
+$DFSAMessage += "# Windows DFS File Services alerts that were auto closed"
 $DFSAMessage += "#==============================="
 $DFSAMessage += "# Alert Count = $($DFSAlertsToClose.Count)"
 $DFSAMessage += "#========================================="
@@ -1059,13 +988,12 @@ $DFSAMessage
 
 $DFSAMessage = $DFSAMessage | out-string
 
-#============================================================
-
+#=================================================================================
 
   $Result = "GOOD"
-  $Message = "DFS Monitors auto-closed for ($date)"
+  $Message = "Windows DFS File Services Monitors auto-closed for ($date)"
 
-  $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n# DFS alert report for ($date). `n `n$DFSAMessage")
+  $momapi.LogScriptEvent($ScriptName,$EventID,0,"Windows DFS File Services alert report for ($date). `n `n$DFSAMessage")
 
 #$bag.AddValue('Result',$Result)
 $bag.AddValue('Count',$Test)
@@ -1075,6 +1003,101 @@ $bag.AddValue('Summary',$DFSAMessage)
 
 # Return all bags
 $bag
+#============================================================
+
+
+#
+# Rule Alerts to auto close
+#=================================================================================
+# Unhealthy rules
+#
+# (Rules) Alerts to auto close after reset monitor
+# $SCOMCoreRuleAlerts | Resolve-SCOMAlert
+
+if ( $DFSAlerts.Name -eq $SCOMCoreRules.DisplayName )
+	{
+	write-host "DFS rule(s) matched"
+	$SCOMCoreRules.DisplayName | Resolve-SCOMAlert -Comment "Windows DFS File Services Addendum daily rule close automation completed"
+	}
+
+# Write event for rule closure
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"#Proactive DailyTasks Windows DFS File Services addendum rule reset completed for ($date)")
+
+
+# Monitor Alerts to auto close after rule automation
+#=================================================================================
+
+#=================================================================================
+# Reset Monitors Script base code modified
+# Put ps1 in mgmtpacks folder
+# https://sc.scomurr.com/scom-2012-monitor-reset-cleaning-up-the-environment/
+#	Download
+# https://gallery.technet.microsoft.com/SCOM-2012-Batch-reset-63a17534
+	
+#Alternate
+#https://gallery.technet.microsoft.com/scriptcenter/Auto-reset-script-for-d8b775ca
+
+# Changed up logic to sort unique classes in mgmnt pack families.
+# Added Age variable for monitors thanks to Aris Somatis - $Age specified in top level variables
+# Cycling through monitors made reset loop huge ~650 monitors when only ~50 classes
+# New logic reduced runtime from 8 minutes to roughly 8 seconds
+#=================================================================================
+
+
+if ( $Test.Count -gt 0 )
+	{
+	# DFS pack naming
+	$DFSClasses = @(Get-SCOMClass -Name "*FileServices*"; Get-SCOMClass -Name "*FileServer*"; Get-SCOMClass -Name "*DFS*" )
+	$DFSClass = $DFSClasses | sort -property Name -uniq
+	# Debug
+	$DFSClass.Count
+
+	# Set up monitor objects to reset
+	foreach ($Class in $DFSClass)
+		{
+		$ActiveMonitors = @(Get-SCOMClassInstance -Class $Class | ? { ($_.healthstate -ne 'Success') -AND ( $_.healthstate -ne 'Uninitialized') -AND ($_.IsAvailable -eq $true) } )
+		# Debug
+		$ActiveMonitors.Count
+		# $ActiveMonitors | fl -property *
+		write-host "Found" $ActiveMonitors.Count "unhealthy monitors for class" $Class
+		foreach ( $UnhealthyOLDMonitor in $ActiveMonitors )
+			{
+			#if ( $UnhealthyOLDMonitor.AvailabilityLastModified -lt $Age )
+			if ( $UnhealthyOLDMonitor.StateLastModified -lt $Age )
+				{
+				#$UnhealthyMonitors += $ActiveMonitors.Count					
+				#UnhealthyOLDMonitor | select AvailabilityLastModified,Path,DisplayName
+				#$UnhealthyOLDMonitor.Count
+				#write-host "Found" + $UnhealthyOLDMonitor.Count + "unhealthy monitor beyond" $Age "days."
+				#write-host ""
+				if ( $ActiveMonitors.Count -gt 0)
+					{
+					foreach ( $ActiveMonitor in $UnhealthyOLDMonitor )
+						{
+						# Debug
+						#$ActiveMonitor.ID
+						$ActiveMonitor
+						write-host " Resetting Health State on '" + $ActiveMonitor.FullName + "'" 
+						write-host ""
+						$ActiveMonitor.ResetMonitoringState($ActiveMonitor)
+						}
+					}
+				}
+			}
+		}
+	# Debug
+	#$MonitorClass | fl -property *
+	#$MonitorClass | select DisplayName,ID
+	}
+
+
+# Debug Write event for rule closure
+# $UnhealthyMonitors = $($UnhealthyMonitors | measure-object -sum).sum
+#$momapi.LogScriptEvent($ScriptName,$EventID,0,"# DFS FileServices monitor reset automation completed on ($date). `n `n $($ADDSMonitorsToAutoClose.Count) ")
+# Write event for rule closure
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"#Proactive DailyTasks DFS FileServices monitor reset automation completed for ($date)")
+
+
 #=================================================================================
 # End MAIN script section
  
@@ -1111,10 +1134,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to gather DFS alerts and close via on demand task
+#  Script to gather Windows DFS File Services alerts and close via on demand task
 #
 #  Author: Kevin Justin
 #  v1.0
@@ -1125,7 +1148,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10029.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10033.ps1"
 $EventID = "545"
 #=================================================================================
 
@@ -1156,7 +1179,7 @@ $bag = $momapi.CreatePropertyBag()
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
 
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather DFS Alerts Task for date ($date).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather Windows DFS File Services alerts Task for date ($date).")
  
 $AllDFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
 	-AND ( $_.ResolutionState -ne "255" ) `
@@ -1209,14 +1232,14 @@ if ($DFSAlerts.count -gt 0 )
 	$DFSAMessage += ""
 	$DFSAMessage += "Alert Count = $Test"
 	$DFSAMessage += ""
-	$DFSAMessage += "# DFS alerts for FileServices DFS task for ($date)"
+	$DFSAMessage += "# Windows DFS File Services alerts for FileServices DFS task for ($date)"
 	$DFSAMessage += "#"
 	$DFSAMessage += "#============================================================"
-	$DFSAMessage += "# Number of open DFS alerts"
+	$DFSAMessage += "# Number of open Windows DFS File Services alerts"
 	$DFSAMessage += "#=========================="
 	$DFSAMessage += $DFSAlerts.Count
 	$DFSAMessage += ""
-	$DFSAMessage += "# DFS alerts that were auto closed"
+	$DFSAMessage += "# Windows DFS File Services alerts that were auto closed"
 	$DFSAMessage += "#==============================="
 	$DFSAMessage += $DFSAlerts | ft TimeRaised,MonitoringObjectDisplayName,Description -auto -wrap
 	$DFSAMessage += "#============================================================"
@@ -1273,10 +1296,10 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10029.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
-#  Script to gather DFS alerts and close via on demand task
+#  Script to gather Windows DFS File Services alerts and close via on demand task
 #
 #  Author: Kevin Justin
 #  v1.0
@@ -1287,7 +1310,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10029.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10033.ps1"
 $EventID = "545"
 #=================================================================================
 
@@ -1317,14 +1340,22 @@ $bag = $momapi.CreatePropertyBag()
 
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
+$Age = [DateTime](Get-Date).AddDays(-7)
 
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather DFS Alerts for date ($date).")
- 
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Gather Windows DFS File Services alerts for date ($date).")
 
-# Gather DFS alerts
+# Gather Windows DFS File Services alerts
 $DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
 	-AND ( $_.ResolutionState -ne "255" ) `
-	}  | ft MonitoringObjectDisplayName,Description -auto -wrap
+	}  
+	# | ft MonitoringObjectDisplayName,Description -auto -wrap
+
+$DFSAlertsToClose = $DFSAlerts | ? { ( $_.Name -like "*Corruptions*" ) `
+    -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
+	} | ? { $_.ResolutionState -ne "255" }
+
+$Test = $DFSAlerts | where { $_.Name -notlike "*rule*" }
+$Test.count
 
 
 # Gather DFS management packs and put into array
@@ -1354,89 +1385,10 @@ foreach ( $DFSpack in $DFSMgmtPackArray )
 
 	$SCOMCoreRules += $SCOMCoreMP.GetRules()
 	$SCOMCoreMonitors += $SCOMCoreMP.GetMonitors()
-	#$SCOMCoreMonitors.Count
 	}
 
-	$SCOMCoreMonitors.Count
+$SCOMCoreMonitors.Count
 
-
-# Reset Monitors Script
-# Put ps1 in mgmtpacks folder
-# https://sc.scomurr.com/scom-2012-monitor-reset-cleaning-up-the-environment/
-#	Download
-# https://gallery.technet.microsoft.com/SCOM-2012-Batch-reset-63a17534
-	
-#Alternate
-#https://gallery.technet.microsoft.com/scriptcenter/Auto-reset-script-for-d8b775ca
-
-
-# Old method
-#=================================================================================
-#$DFSAlerts = get-scomalert | ? { ( $_.Name -eq "DFS-R: A Replicated Folder is Missing an Outbound Connection" ) `
-#    -OR ( $_.Name -eq "DFS-R: Communication Error During Replication" ) `
-#    -OR ( $_.Name -eq "DFS-R: Conflicting Configuration Objects in AD DS" ) `
-#    -OR ( $_.Name -eq "DFS-R: Connection or Replication Group Configuration Doesn't Match with AD DS" ) `
-#    -OR ( $_.Name -eq "DFS-R: DFS Replication Service Is Stopped" ) `
-#    -OR ( $_.Name -eq "DFS-R: Failed to Reach a Replication Group Member" ) `
-#    -OR ( $_.Name -eq "DFS-R: Out of Disk Space" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replicate Folder Was Offline for Too Many Days" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replication Database Internal Error" ) `
-#    -OR ( $_.Name -eq "DFS-R: Replication Stopped Due to an Error on a Volume" ) `
-#    -OR ( $_.Name -eq "DFS-R: Unexpected Service Shutdown" ) `
-#    -OR ( $_.Name -eq "DFS Replication 2104 Event ID with Message contains 'Internal database error' Alert Monitor" ) `	
-#    -OR ( $_.Name -eq "Proactive DFSR Replication And Backlog Monitor" ) `
-#    -OR ( $_.Name -like "DFS Monitors auto-closed for*" ) `
-#    }   | ? { $_.ResolutionState -ne "255"}  | ft MonitoringObjectDisplayName,Description -auto -wrap
-
-#
-# Alert Name = DFS-R: Replication Stopped Due to an Error on a Volume
-# Alert Name = DFS-R: Replication Database Internal Error
-# Alert Name = DFS-R: Unexpected Service Shutdown
-# Alert Name = DFS-R: Out of Disk Space
-# Alert Name = DFS-R: A Replicated Folder is Missing an Outbound Connection
-# Alert Name = DFS-R: DFS Replication Service Is Stopped
-
-$Test = $DFSAlerts.count
-
-if ( $Test -gt 0 )
-{
-foreach ($MonitorDisplayName in $SCOMCoreMonitors.DisplayName)
-	{
-	$Monitors = @(Get-SCOMMonitor -displayname $MonitorDisplayName )
-
-	# Set up monitor objects to reset
-	foreach ($Monitor in $Monitors)
-		{
-		$MonitorClass = Get-SCOMClass -Id $Monitor.Target.Id
-		$ActiveMonitors = Get-SCOMClassInstance -Class $MonitorClass | ? { ($_.healthstate -ne 'Success') -AND ( $_.healthstate -ne 'Uninitialized') -AND ($_.IsAvailable -eq $true) }
-		write-host "Found" + $ActiveMonitors.Count + "active monitors."
-		if ( $ActiveMonitors -ne $null)
-			{
-			foreach ($ActiveMonitor in $ActiveMonitors)
-				{
-				write-host " Resetting Health State on '" +$ActiveMonitor.FullName + "'" 
-				$ActiveMonitor.ResetMonitoringState($Monitor.ID)
-				}
-			}
-		}
-	}
-}
-
-#
-# Alerts to auto close after reset monitor
-#
-
-# Gather DFS alerts
-$DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-	-AND ( $_.ResolutionState -ne "255" ) `
-	}  # | ft MonitoringObjectDisplayName,Description -auto -wrap
-
-$DFSAlertsToClose = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-    -OR ( $_.Name -like "*Corruptions*" ) `
-    -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
-	} | ? { $_.ResolutionState -ne "255" } | Resolve-SCOMAlert -Comment "Closing daily alert flood after report alert generated - DFS Addendum automation DS"
-
-$DFSAlerts | Resolve-SCOMAlert -Comment "Closing daily alert flood after report alert generated - DFS Addendum automation DS"
 
 #
 # Build report
@@ -1448,12 +1400,12 @@ $DFSAMessage += ""
 $DFSAMessage += "# DFS Alert report"
 $DFSAMessage += "#"
 $DFSAMessage += "#============================================================"
-$DFSAMessage += "# Number of open DFS alerts"
+$DFSAMessage += "# Number of open Windows DFS File Services alerts"
 $DFSAMessage += "#=========================="
 $DFSAMessage += $DFSAlerts | out-string
 $DFSAMessage += ""	
 $DFSAMessage += ""
-$DFSAMessage += "# DFS alerts that were auto closed"
+$DFSAMessage += "# Windows DFS File Services alerts that were auto closed"
 $DFSAMessage += "#==============================="
 $DFSAMessage += "# Alert Count = $($DFSAlertsToClose.Count)"
 $DFSAMessage += "#========================================="
@@ -1469,13 +1421,12 @@ $DFSAMessage
 
 $DFSAMessage = $DFSAMessage | out-string
 
-#============================================================
-
+#=================================================================================
 
   $Result = "GOOD"
-  $Message = "DFS Monitors auto-closed for ($date)"
+  $Message = "Windows DFS File Services Monitors auto-closed for ($date)"
 
-  $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n# DFS alert report for ($date). `n `n$DFSAMessage")
+  $momapi.LogScriptEvent($ScriptName,$EventID,0,"Windows DFS File Services alert report for ($date). `n `n$DFSAMessage")
 
 #$bag.AddValue('Result',$Result)
 $bag.AddValue('Count',$Test)
@@ -1485,6 +1436,100 @@ $bag.AddValue('Summary',$DFSAMessage)
 
 # Return all bags
 $bag
+#============================================================
+
+
+#
+# Rule Alerts to auto close
+#=================================================================================
+# Unhealthy rules
+#
+# (Rules) Alerts to auto close after reset monitor
+# $SCOMCoreRuleAlerts | Resolve-SCOMAlert
+
+if ( $DFSAlerts.Name -eq $SCOMCoreRules.DisplayName )
+	{
+	write-host "DFS rule(s) matched"
+	$SCOMCoreRules.DisplayName | Resolve-SCOMAlert -Comment "Windows DFS File Services Addendum daily rule close automation completed"
+	}
+
+# Write event for rule closure
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"#Proactive DailyTasks Windows DFS File Services addendum rule reset completed for ($date)")
+
+
+# Monitor Alerts to auto close after rule automation
+#=================================================================================
+
+#=================================================================================
+# Reset Monitors Script base code modified
+# Put ps1 in mgmtpacks folder
+# https://sc.scomurr.com/scom-2012-monitor-reset-cleaning-up-the-environment/
+#	Download
+# https://gallery.technet.microsoft.com/SCOM-2012-Batch-reset-63a17534
+	
+#Alternate
+#https://gallery.technet.microsoft.com/scriptcenter/Auto-reset-script-for-d8b775ca
+
+# Changed up logic to sort unique classes in mgmnt pack families.
+# Added Age variable for monitors thanks to Aris Somatis - $Age specified in top level variables
+# Cycling through monitors made reset loop huge ~650 monitors when only ~50 classes
+# New logic reduced runtime from 8 minutes to roughly 8 seconds
+#=================================================================================
+
+
+if ( $Test.Count -gt 0 )
+	{
+	# DFS pack naming
+	$DFSClasses = @(Get-SCOMClass -Name "*FileServices*"; Get-SCOMClass -Name "*FileServer*"; Get-SCOMClass -Name "*DFS*" )
+	$DFSClass = $DFSClasses | sort -property Name -uniq
+	# Debug
+	$DFSClass.Count
+
+	# Set up monitor objects to reset
+	foreach ($Class in $DFSClass)
+		{
+		$ActiveMonitors = @(Get-SCOMClassInstance -Class $Class | ? { ($_.healthstate -ne 'Success') -AND ( $_.healthstate -ne 'Uninitialized') -AND ($_.IsAvailable -eq $true) } )
+		# Debug
+		$ActiveMonitors.Count
+		# $ActiveMonitors | fl -property *
+		write-host "Found" $ActiveMonitors.Count "unhealthy monitors for class" $Class
+		foreach ( $UnhealthyOLDMonitor in $ActiveMonitors )
+			{
+			#if ( $UnhealthyOLDMonitor.AvailabilityLastModified -lt $Age )
+			if ( $UnhealthyOLDMonitor.StateLastModified -lt $Age )
+				{
+				#$UnhealthyMonitors += $ActiveMonitors.Count					
+				#UnhealthyOLDMonitor | select AvailabilityLastModified,Path,DisplayName
+				#$UnhealthyOLDMonitor.Count
+				#write-host "Found" + $UnhealthyOLDMonitor.Count + "unhealthy monitor beyond" $Age "days."
+				#write-host ""
+				if ( $ActiveMonitors.Count -gt 0)
+					{
+					foreach ( $ActiveMonitor in $UnhealthyOLDMonitor )
+						{
+						# Debug
+						#$ActiveMonitor.ID			
+						write-host " Resetting Health State on '" + $ActiveMonitor.FullName + "'" 
+						write-host ""
+						$ActiveMonitor.ResetMonitoringState($ActiveMonitor)
+						}
+					}
+				}
+			}
+		}
+	# Debug
+	#$MonitorClass | fl -property *
+	#$MonitorClass | select DisplayName,ID
+	}
+
+
+# Debug Write event for rule closure
+# $UnhealthyMonitors = $($UnhealthyMonitors | measure-object -sum).sum
+#$momapi.LogScriptEvent($ScriptName,$EventID,0,"# DFS FileServices monitor reset automation completed on ($date). `n `n $($ADDSMonitorsToAutoClose.Count) ")
+# Write event for rule closure
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"#Proactive DailyTasks DFS FileServices monitor reset automation completed for ($date)")
+
+
 #=================================================================================
 # End MAIN script section
  
@@ -1520,7 +1565,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10029.ps1</ScriptName>
+                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10033.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather DFSR backlog and check Engineering script
@@ -1534,7 +1579,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.  
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10029.ps1"
+$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10033.ps1"
 $EventID = "547"
 #=================================================================================
  
@@ -2201,7 +2246,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                       <XPathQuery Type="String">EventDescription</XPathQuery>
                     </ValueExpression>
                     <Operator>ContainsSubstring</Operator>
-                    <Pattern>DFS alerts for FileServices DFS task for</Pattern>
+                    <Pattern>Windows DFS File Services alerts for FileServices DFS task for</Pattern>
                   </RegExExpression>
                 </Expression>
               </And>
@@ -3804,7 +3849,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFDN2!Microsoft.Windows.FileServer.DFSN.10.0.Service" Monitor="MWFDN2!Microsoft.Windows.FileServer.DFSN.10.0.Service.AvailabilityState" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10029.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10033.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -3825,7 +3870,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10029.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10033.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -3949,7 +3994,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFDR2!Microsoft.Windows.FileServer.DFSR.10.0.Service" Monitor="Microsoft.Windows.FileServer.DFSR.10.0.Service.AvailabilityState.Monitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10029.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10033.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -3970,7 +4015,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10029.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10033.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -4094,7 +4139,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFF!Microsoft.Windows.FileServices.Service.FCI.10.0" Monitor="MWFF!Microsoft.Windows.FileServices.Service.FCI.Service" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery.v10029.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery.v10033.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -4115,7 +4160,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.SmSVC.10.0.Service.Recovery.v10029.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.SmSVC.10.0.Service.Recovery.v10033.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -4332,6 +4377,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="Microsoft.Windows.Server.FileServices.2016.Addendum">
           <Name>Microsoft Windows Server File Services 2016 DFS Addendum</Name>
           <Description>
+v1.0.3.2  11 Dec 2023 Massive change in reset monitor logic, reducing runtime gt 92%, allows Age calculation before reset
+v1.0.3.1  30 Nov 2023 Removed debug detail from DS/WA which showed in Health Explorer pane
 v1.0.3.0  18 Jul 2023 Updates to report and closure DS timing
 v1.0.2.8  12 Jul 2023 DFS Close and Report scripts updated, timing to spread out runtimes on SCOM MS
 v1.0.2.6  28 Jun 2023 Close automation update DS and WA for comments, Recovery DisplayStrings
