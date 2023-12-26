@@ -1,5 +1,5 @@
 # FileServicesAddendum
-Download here
+Download [here](https://github.com/theKevinJustin/FileServicesAddendum/blob/main/Microsoft.Windows.Server.FileServices.2016.Addendum.xml)
 
 Blog [https://kevinjustin.com/blog/2023/08/31/file-services-addendum/](https://kevinjustin.com/blog/2023/08/31/file-services-addendum/)
 
