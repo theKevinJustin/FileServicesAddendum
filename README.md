@@ -1,4 +1,6 @@
 # FileServicesAddendum
+Microsoft.Windows.Server.FileServices.2016.Addendum.xml v1.0.3.5
+
 Download [here](https://github.com/theKevinJustin/FileServicesAddendum/blob/main/Microsoft.Windows.Server.FileServices.2016.Addendum.xml)
 
 Blog [https://kevinjustin.com/blog/2023/08/31/file-services-addendum/](https://kevinjustin.com/blog/2023/08/31/file-services-addendum/)
@@ -8,7 +10,8 @@ Microsoft Windows Server FileServices 2016 Addendum -
 
 # Version History
 ```
-v1.0.3.3  11 Dec 2023 Massive change in reset monitor logic, reducing runtime gt 92%, allows Age calculation before reset, whitespace audit
+v1.0.3.5  21 Dec 2023 Updated Rule closure logic, whitespace audit
+v1.0.3.2  11 Dec 2023 Massive change in reset monitor logic, reducing runtime gt 92%, allows Age calculation before reset
 v1.0.3.1  30 Nov 2023 Removed debug detail from DS/WA which showed in Health Explorer pane
 v1.0.3.0  18 Jul 2023 Updates to report and closure DS timing
 v1.0.2.8  12 Jul 2023 DFS Close and Report scripts updated, timing to spread out runtimes on SCOM MS
