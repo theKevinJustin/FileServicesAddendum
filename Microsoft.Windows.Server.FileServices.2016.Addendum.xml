@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>Microsoft.Windows.Server.FileServices.2016.Addendum</ID>
-      <Version>1.0.3.5</Version>
+      <Version>1.0.3.7</Version>
     </Identity>
     <Name>Microsoft Windows Server FileServices 2016 Addendum</Name>
     <References>
@@ -98,7 +98,7 @@
               <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
                 <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
                 <SyncTime>$Config/SyncTime$</SyncTime>
-                <ScriptName>Proactive.DFS.Watcher.Monitoring.Class.Discovery.DS.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DFS.Watcher.Monitoring.Class.Discovery.DS.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to discover a SCOM class when a File Exists
@@ -124,7 +124,7 @@ param($SourceId,$ManagedEntityId,$ComputerName,$MGName,$DebugLogging,$FilePath)
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "DFS.Watcher.Monitoring.Class.Discovery.DS.v10035.ps1"
+$ScriptName = "DFS.Watcher.Monitoring.Class.Discovery.DS.v10037.ps1"
 $EventID = "662"
 #=================================================================================
 
@@ -255,7 +255,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `nScript Runtim
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  DFSR replication backlog monitor
@@ -268,7 +268,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `nScript Runtim
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging.
-$ScriptName = "Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10035.ps1"
+$ScriptName = "Proactive.DFSR.ReplicationAndBacklog.Monitor.DataSource.v10037.ps1"
 $EventID = "542"
 #=================================================================================
 
@@ -424,7 +424,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10035.ps1</ScriptName>
+                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather DFSR backlog and check Engineering script
@@ -438,7 +438,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10035.ps1"
+$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.DataSource.v10037.ps1"
 $EventID = "546"
 #=================================================================================
 
@@ -686,7 +686,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather Windows DFS File Services alerts report
@@ -700,7 +700,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10035.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Datasource.v10037.ps1"
 $EventID = "544"
 #=================================================================================
 
@@ -856,7 +856,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather Windows DFS File Services alerts and close via on demand task
@@ -870,7 +870,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10035.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Datasource.v10037.ps1"
 $EventID = "544"
 #=================================================================================
 
@@ -900,19 +900,18 @@ $bag = $momapi.CreatePropertyBag()
 
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
-$Age = [DateTime](Get-Date).AddDays(-7)
+$Age = [DateTime](Get-Date).AddDays(-1)
 
 $momapi.LogScriptEvent($ScriptName,$EventID,0,"Gather Windows DFS File Services alerts for date ($date).")
 
 # Gather Windows DFS File Services alerts
-$DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-	-AND ( $_.ResolutionState -ne "255" ) `
+$DFSAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -like "*DFS*" ) `
 	}  
 	# | ft MonitoringObjectDisplayName,Description -auto -wrap
 
 $DFSAlertsToClose = $DFSAlerts | ? { ( $_.Name -like "*Corruptions*" ) `
     -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
-	} | ? { $_.ResolutionState -ne "255" }
+	}
 
 $Test = $DFSAlerts | where { $_.Name -notlike "*rule*" }
 $Test.count
@@ -1127,7 +1126,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather Windows DFS File Services alerts and close via on demand task
@@ -1141,7 +1140,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10035.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Report.Script.Alert.WA.v10037.ps1"
 $EventID = "545"
 #=================================================================================
 
@@ -1282,7 +1281,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10035.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather Windows DFS File Services alerts and close via on demand task
@@ -1296,7 +1295,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10035.ps1"
+$ScriptName = "Proactive.DailyTasks.DFSAlerts.Close.Script.Alert.WA.v10037.ps1"
 $EventID = "545"
 #=================================================================================
 
@@ -1326,19 +1325,18 @@ $bag = $momapi.CreatePropertyBag()
 
 #For a simple example - get files in Windows Temp:
 $date = get-date -uFormat "%Y-%m-%d"
-$Age = [DateTime](Get-Date).AddDays(-7)
+$Age = [DateTime](Get-Date).AddDays(-1)
 
 $momapi.LogScriptEvent($ScriptName,$EventID,0,"Gather Windows DFS File Services alerts for date ($date).")
 
 # Gather Windows DFS File Services alerts
-$DFSAlerts = get-scomalert | ? { ( $_.Name -like "*DFS*" ) `
-	-AND ( $_.ResolutionState -ne "255" ) `
+$DFSAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -like "*DFS*" ) `
 	}  
 	# | ft MonitoringObjectDisplayName,Description -auto -wrap
 
 $DFSAlertsToClose = $DFSAlerts | ? { ( $_.Name -like "*Corruptions*" ) `
     -OR ( $_.Name -eq "SMB Witness client received error from a SMB Witness server" ) `
-	} | ? { $_.ResolutionState -ne "255" }
+	}
 
 $Test = $DFSAlerts | where { $_.Name -notlike "*rule*" }
 $Test.count
@@ -1551,7 +1549,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10035.ps1</ScriptName>
+                <ScriptName>Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10037.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather DFSR backlog and check Engineering script
@@ -1565,7 +1563,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10035.ps1"
+$ScriptName = "Microsoft.Windows.Server.FileServices.2016.Addendum.Backlog.Watcher.Script.Alert.WA.v10037.ps1"
 $EventID = "547"
 #=================================================================================
  
@@ -3757,7 +3755,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <RepeatCount>2</RepeatCount>
         </Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="Proactive.DFSR.ReplicationAndBacklog.Monitor" Accessibility="Public" Enabled="true" Target="MWFDRL!Microsoft.Windows.FileServer.DFSR.ReplicationGroupMember" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Proactive.DFS.ReplicationAndBacklog.DataSource.MonitorType" ConfirmDelivery="true">
+      <UnitMonitor ID="Proactive.DFSR.ReplicationAndBacklog.Monitor" Accessibility="Public" Enabled="false" Target="MWFDRL!Microsoft.Windows.FileServer.DFSR.ReplicationGroupMember" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Proactive.DFS.ReplicationAndBacklog.DataSource.MonitorType" ConfirmDelivery="true">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="Proactive.DFSR.ReplicationAndBacklog.Monitor.AlertMessage">
           <AlertOnState>Warning</AlertOnState>
@@ -3775,7 +3773,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <TimeoutSeconds>120</TimeoutSeconds>
         </Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="Proactive.DFSR.ReplicationAndBacklog.Watcher.Monitor" Accessibility="Public" Enabled="true" Target="DFS.Watcher.Monitoring.Seed.Class" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Proactive.DFS.ReplicationAndBacklog.Watcher.DataSource.MonitorType" ConfirmDelivery="true">
+      <UnitMonitor ID="Proactive.DFSR.ReplicationAndBacklog.Watcher.Monitor" Accessibility="Public" Enabled="false" Target="DFS.Watcher.Monitoring.Seed.Class" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Proactive.DFS.ReplicationAndBacklog.Watcher.DataSource.MonitorType" ConfirmDelivery="true">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="Proactive.DFSR.ReplicationAndBacklog.Watcher.Monitor.AlertMessage">
           <AlertOnState>Warning</AlertOnState>
@@ -3938,7 +3936,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFDN2!Microsoft.Windows.FileServer.DFSN.10.0.Service" Monitor="MWFDN2!Microsoft.Windows.FileServer.DFSN.10.0.Service.AvailabilityState" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10035.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10037.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -3959,7 +3957,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10035.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSN.10.0.Service.Recovery.v10037.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -4083,7 +4081,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFDR2!Microsoft.Windows.FileServer.DFSR.10.0.Service" Monitor="Microsoft.Windows.FileServer.DFSR.10.0.Service.AvailabilityState.Monitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10035.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10037.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -4104,7 +4102,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10035.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.DFSR.10.0.Service.Recovery.v10037.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -4228,7 +4226,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
       <Recovery ID="Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery" Accessibility="Public" Enabled="true" Target="MWFF!Microsoft.Windows.FileServices.Service.FCI.10.0" Monitor="MWFF!Microsoft.Windows.FileServices.Service.FCI.Service" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
         <Category>Custom</Category>
         <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-          <ScriptName>Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery.v10035.ps1</ScriptName>
+          <ScriptName>Proactive.Microsoft.Windows.FileServer.SmSvc.10.0.Service.Recovery.v10037.ps1</ScriptName>
           <ScriptBody>
 #=================================================================================
 #  Script to restart a service
@@ -4249,7 +4247,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging
-$ScriptName = "Proactive.Microsoft.Windows.FileServer.SmSVC.10.0.Service.Recovery.v10035.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.FileServer.SmSVC.10.0.Service.Recovery.v10037.ps1"
 $EventID = "3750"
 #=================================================================================
 
@@ -4466,6 +4464,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="Microsoft.Windows.Server.FileServices.2016.Addendum">
           <Name>Microsoft Windows Server File Services 2016 DFS Addendum</Name>
           <Description>
+v1.0.3.7   7 Nov 2024 Disabled DFSR backlog monitors
+v1.0.3.6   4 Jan 2024 Resolution State logic improvements for large environments
 v1.0.3.5  21 Dec 2023 Updated Rule closure logic, whitespace audit
 v1.0.3.2  11 Dec 2023 Massive change in reset monitor logic, reducing runtime gt 92%, allows Age calculation before reset
 v1.0.3.1  30 Nov 2023 Removed debug detail from DS/WA which showed in Health Explorer pane
