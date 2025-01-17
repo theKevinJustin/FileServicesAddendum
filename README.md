@@ -1,5 +1,5 @@
 # FileServicesAddendum
-Microsoft.Windows.Server.FileServices.2016.Addendum.xml v1.0.3.5
+Microsoft.Windows.Server.FileServices.2016.Addendum.xml v1.0.3.7
 
 Download [here](https://github.com/theKevinJustin/FileServicesAddendum/blob/main/Microsoft.Windows.Server.FileServices.2016.Addendum.xml)
 
@@ -10,6 +10,8 @@ Microsoft Windows Server FileServices 2016 Addendum -
 
 # Version History
 ```
+v1.0.3.7   7 Nov 2024 Disabled DFSR backlog monitors
+v1.0.3.6   4 Jan 2024 Resolution State logic improvements for large environments
 v1.0.3.5  21 Dec 2023 Updated Rule closure logic, whitespace audit
 v1.0.3.2  11 Dec 2023 Massive change in reset monitor logic, reducing runtime gt 92%, allows Age calculation before reset
 v1.0.3.1  30 Nov 2023 Removed debug detail from DS/WA which showed in Health Explorer pane
